@@ -1,0 +1,25 @@
+$roboto-font-family: 'Roboto', sans-serif, Arial;
+
+$green-light: #168039;
+$gray-dark: #2f3d46;
+$gray-light: #eee;
+
+$padding-container: 10px 15px;
+
+$size-x-small: 480px;
+$size-small: 576px;
+$size-medium: 768px;
+$size-large: 992px;
+$size-x-large: 1200px;
+
+:root {
+  --font-family: #{$roboto-font-family};
+  --primary-background-color: #{$green-light};
+  --primary-font-color: #{$green-light};
+  --secondary-font-color: #{$gray-dark};
+}
+
+@mixin cssVariable($prop-name, $prop-css-name, $value) {
+  #{$prop-name}: $value;
+  #{$prop-name}: var(#{$prop-css-name}, $value);
+}
