@@ -1,0 +1,22 @@
+header {
+  padding: $padding;
+  color: white;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+
+  .logo {
+    flex: 1 1 auto;
+  }
+
+  .nav {
+    max-width: 500px;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex: 3 1 auto;
+    justify-content: space-between;
+  }
+}
