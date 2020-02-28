@@ -1,0 +1,38 @@
+.section {
+  min-height: 50vh;
+  padding: $padding;
+
+  &-title {
+    position: relative;
+    display: block;
+    position: relative;
+    text-align: center;
+    @include cssVariable('font-size', '--font-size-big', #{$font-size-big});
+    > span {
+      position: relative;
+      display: inline-block;
+      z-index: 2;
+      padding-left: 30px;
+      padding-right: 30px;
+      @include cssVariable('background-color', '--gray-dark', $gray-dark);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 50%;
+      background: white;
+      top: 50%;
+    }
+    &:before {
+      background-image: linear-gradient(to right, $gray-dark, transparent);
+      left: 0;
+    }
+    &:after {
+      background-image: linear-gradient(to left, $gray-dark, transparent);
+      right: 0;
+    }
+  }
+}

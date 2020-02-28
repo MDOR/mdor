@@ -3,25 +3,21 @@
 @import 'reset/custom-native-reset';
 @import 'components';
 
-.intro-phrase {
-  @include cssVariable('color', '--yellow', #{$yellow});
-}
-
-.section {
-  min-height: 50vh;
-  padding: $padding;
-}
-
 .intro {
   position: relative;
   padding-top: 200px;
   padding-bottom: 200px;
+  height: 100vh;
   &-paragraph {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
     opacity: 0;
   }
+  &-phrase {
+    @include cssVariable('color', '--yellow', #{$yellow});
+  }
+
   .author-name {
     @include cssVariable(
       'font-size',
@@ -59,7 +55,7 @@
       opacity: 0.005;
     }
   }
-} 
+}
 
 .optional-contact {
   @media screen and (max-width: $size-large) {
@@ -67,31 +63,49 @@
   }
 
   > * {
-  	@include cssVariable('background-color', '--gray-dark', $gray-dark);
-  	padding-left: 15px;
-  	padding-right: 15px;
+    @include cssVariable('background-color', '--gray-dark', $gray-dark);
+    padding-left: 15px;
+    padding-right: 15px;
     position: fixed;
     bottom: 0;
-    height: 300px;
+    height: 310px;
     width: 40px;
-    position: absolute;
-  } 
+    position: fixed;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+    	padding-bottom: 20px;
+    }
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+    fill: currentcolor;
+  }
 
   a {
-		@include cssVariable('color', '--yellow', $yellow);
-		transition: .5 color ease;
-		text-decoration: none;
- 
-		&:hover, &:active {
-			@include cssVariable('color', '--red', $red);
-		} 
+    @include cssVariable('color', '--yellow', $yellow);
+    transition: 0.5s color ease;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      @include cssVariable('color', '--red', $red);
+    }
   }
 
   .email {
-  	writing-mode: vertical-rl;
+    writing-mode: vertical-lr;
+    margin-bottom: 20px;
   }
   .left {
     left: 40px;
+    padding: 0;
   }
   .right {
     right: 40px;
