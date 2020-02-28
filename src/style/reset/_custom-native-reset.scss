@@ -9,8 +9,12 @@ body {
   @include cssVariable('font-family', '--font-family', #{$font-family});
   @include cssVariable('background-color', '--gray-dark', $gray-dark);
   @include cssVariable('color', '--blue-transparent', #{$blue-transparent});
-  font-size: 18px;
+  font-size: 20px; 
   min-height: 500px;
   min-width: $size-x-small;
   -webkit-font-smoothing: antialiased;
+}
+
+p {
+    line-height: 1.2rem;
 }
