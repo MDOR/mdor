@@ -1,0 +1,40 @@
+$font-family: 'Spartan', monospace, Arial;
+
+$gray-dark: #222831;
+$gray-light: #8892b0;
+$yellow: #efbb35;
+$red: #c93736;
+$blue-transparent: #ccd6f6;
+
+$padding: 10px 15px;
+
+$size-x-small: 480px;
+$size-small: 576px;
+$size-medium: 768px;
+$size-large: 992px;
+$size-x-large: 1240px;
+
+$font-size-normal: 18px;
+$font-size-medium: 30px;
+$font-size-big: 45px;
+$font-size-x-big: 70px; 
+$font-size-x-x-big: 85px;
+
+:root {
+  --font-family: #{$font-family};
+  --yellow: #{$yellow};
+  --red: #{$red};
+  --gray-dark: #{$gray-dark};
+  --gray-light: #{$gray-light};
+  --blue-transparent: #{$blue-transparent};
+  --font-size-normal: #{$font-size-normal};
+  --font-size-medium: #{$font-size-medium};
+  --font-size-big: #{$font-size-big};
+  --font-size-x-big: #{$font-size-x-big};
+  --font-size-x-x-big: #{$font-size-x-x-big};
+}
+
+@mixin cssVariable($prop-name, $prop-css-name, $value) {
+  #{$prop-name}: $value;
+  #{$prop-name}: var(#{$prop-css-name}, $value);
+}

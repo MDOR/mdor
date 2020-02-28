@@ -1,0 +1,99 @@
+@import 'variables';
+@import '~/node_modules/normalize.css/normalize.css';
+@import 'reset/custom-native-reset';
+@import 'components';
+
+.intro-phrase {
+  @include cssVariable('color', '--yellow', #{$yellow});
+}
+
+.section {
+  min-height: 50vh;
+  padding: $padding;
+}
+
+.intro {
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  &-paragraph {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    opacity: 0;
+  }
+  .author-name {
+    @include cssVariable(
+      'font-size',
+      '--font-size-x-x-big',
+      #{$font-size-x-x-big}
+    );
+    @include cssVariable('color', '--blue-transparent', #{$blue-transparent});
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 0 0 transparent, 0 0 5px $blue-transparent, 0 0 10px white;
+  }
+  .author-title {
+    @include cssVariable(
+      'font-size',
+      '--font-size-x-x-big',
+      #{$font-size-x-x-big}
+    );
+    @include cssVariable('color', '--yellow', #{$yellow});
+    margin: 0;
+  }
+
+  &:before {
+    content: attr(data-message);
+    position: absolute;
+    font-weight: bold;
+    font-size: 120px;
+    top: 33%;
+    left: 25%;
+    opacity: 1;
+    transition: 5s opacity ease;
+  }
+
+  &-before-ready {
+    &:before {
+      opacity: 0.005;
+    }
+  }
+} 
+
+.optional-contact {
+  @media screen and (max-width: $size-large) {
+    display: none;
+  }
+
+  > * {
+  	@include cssVariable('background-color', '--gray-dark', $gray-dark);
+  	padding-left: 15px;
+  	padding-right: 15px;
+    position: fixed;
+    bottom: 0;
+    height: 300px;
+    width: 40px;
+    position: absolute;
+  } 
+
+  a {
+		@include cssVariable('color', '--yellow', $yellow);
+		transition: .5 color ease;
+		text-decoration: none;
+ 
+		&:hover, &:active {
+			@include cssVariable('color', '--red', $red);
+		} 
+  }
+
+  .email {
+  	writing-mode: vertical-rl;
+  }
+  .left {
+    left: 40px;
+  }
+  .right {
+    right: 40px;
+  }
+}

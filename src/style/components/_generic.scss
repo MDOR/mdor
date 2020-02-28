@@ -1,0 +1,31 @@
+.content-container {
+  max-width: $size-x-large;
+
+  @media (min-width: $size-x-large) {
+    display: block;
+    margin: auto;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-justify {
+    text-align: justify;
+  }
+}
+
+.responsive-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}

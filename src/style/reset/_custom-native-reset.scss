@@ -1,0 +1,16 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @include cssVariable('font-family', '--font-family', #{$font-family});
+  @include cssVariable('background-color', '--gray-dark', $gray-dark);
+  @include cssVariable('color', '--blue-transparent', #{$blue-transparent});
+  font-size: 18px;
+  min-height: 500px;
+  min-width: $size-x-small;
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,5 @@
+node_modules/**
+target/**
+docs/**
+src/js/polyfill/**
+webpack.config.js
