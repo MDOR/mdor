@@ -60,7 +60,10 @@ setTimeout(authorName, 10);
 const fragment = document.createDocumentFragment();
 [
   'angular.svg',
+  'bitbucket.svg',
+  'autoprefixer.svg',
   'git.svg',
+  'eslint.svg',
   'html-5.svg',
   'node.svg',
   'redux-saga.svg',
@@ -79,15 +82,25 @@ const fragment = document.createDocumentFragment();
   'javascript.svg',
   'react-router.svg',
   'express.svg',
+  'nodemon.svg',
   'grunt.svg',
   'jquery.svg',
   'react.svg',
+  'browserify.svg',
+  'prettier.svg',
+  'puppeteer.svg',
   'foundation.svg',
   'gulp.svg',
   'mysql.svg',
   'sass.svg',
   'less.svg',
   'jest.svg',
+  'babel.svg',
+  'yarn.svg',
+  'npm.svg',
+  'bower.svg',
+  'webpack.svg',
+  'storybook.svg',
   'reactivex.svg'
 ].forEach(skill => {
   const li = document.createElement('li');
