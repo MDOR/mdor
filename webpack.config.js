@@ -98,6 +98,10 @@ module.exports = {
         include: /\.module\.css$/
       },
       {
+        test: /\.css$/,
+        use: ['css-loader']
+      },
+      {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
