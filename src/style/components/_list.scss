@@ -27,7 +27,7 @@
   }
 
   .date {
-    color: white;
+    @include cssVariable('color', '--yellow', $yellow);
     font-weight: 300;
     text-align: right;
     font-size: 0.8rem;

@@ -129,6 +129,15 @@
   }
 
   @media (max-width: $size-medium) {
+    .picture {
+      margin-left: 10%;
+      width: 80%;
+    }
+    .abstract {
+      p {
+        width: 100%;
+      }
+    }
     .skills {
       column-count: 4;
     }
