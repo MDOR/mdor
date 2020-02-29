@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    flex: 1;
+    flex-shrink: 1;
+    flex-grow: 1;
+    -ms-flex: 1;
+    -ms-flex-shrink: 1;
+    -ms-flex-grow: 1;
+  }
+}

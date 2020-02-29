@@ -11,10 +11,21 @@ body {
   @include cssVariable('color', '--blue-transparent', #{$blue-transparent});
   font-size: 20px;
   min-height: 500px;
-  min-width: $size-x-small;
+  min-width: 480px;
   -webkit-font-smoothing: antialiased;
 }
 
 p {
   line-height: 1.2rem;
+}
+
+a {
+  @include cssVariable('color', '--yellow', $yellow);
+  transition: 0.5s color ease;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    @include cssVariable('color', '--red', $red);
+  }
 }

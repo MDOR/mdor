@@ -7,6 +7,7 @@
   position: relative;
   height: 100vh;
   padding: 300px 15px;
+
   &-paragraph {
     margin-left: auto;
     margin-right: auto;
@@ -23,9 +24,9 @@
       '--font-size-x-x-big',
       #{$font-size-x-x-big}
     );
-    @include cssVariable('color', '--blue-transparent', #{$blue-transparent});
+    color: white;
     margin: 0;
-    font-weight: 600;
+    font-weight: 300;
     text-shadow: 0 0 0 transparent, 0 0 5px $blue-transparent, 0 0 10px white;
   }
   .author-title {
@@ -52,6 +53,17 @@
   &-before-ready {
     &:before {
       opacity: 0.005;
+    }
+  }
+
+  @media (max-width: $size-medium) {
+    padding: 130px 15px;
+    &:before {
+      font-size: 60px;
+    }
+    .author-name,
+    .author-title {
+      @include cssVariable('font-size', '--font-size-big', #{$font-size-big});
     }
   }
 }
@@ -88,28 +100,44 @@
     fill: currentcolor;
   }
 
-  a {
-    @include cssVariable('color', '--yellow', $yellow);
-    transition: 0.5s color ease;
-    text-decoration: none;
-
-    &:hover,
-    &:active {
-      @include cssVariable('color', '--red', $red);
-    }
-  }
-
   .email {
     writing-mode: vertical-lr;
     -ms-writing-mode: tb-rl;
     direction: rtl;
     margin-bottom: 20px;
   }
-  .left {
-    left: 40px;
-    padding: 0;
-  }
+
   .right {
     right: 40px;
+  }
+}
+
+.bio {
+  .abstract {
+    flex-grow: 2;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+
+  .picture {
+    > img {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: $size-medium) {
+    .flex-container {
+      flex-direction: column-reverse;
+    }
+    .abstract {
+      flex-basis: 100%;
+    }
+    .picture {
+      > img {
+        width: 80%;
+        display: block;
+        margin: auto;
+      }
+    }
   }
 }

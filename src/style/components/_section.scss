@@ -23,15 +23,15 @@
       position: absolute;
       height: 1px;
       width: 50%;
-      background: white;
+      background: transparent;
       top: 50%;
     }
     &:before {
-      background-image: linear-gradient(to right, $gray-dark, transparent);
+      background-image: linear-gradient(to left, $yellow, transparent);
       left: 0;
     }
     &:after {
-      background-image: linear-gradient(to left, $gray-dark, transparent);
+      background-image: linear-gradient(to right, $yellow, transparent);
       right: 0;
     }
   }

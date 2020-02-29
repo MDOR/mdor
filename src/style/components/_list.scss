@@ -1,0 +1,15 @@
+.list-style-none {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.skills {
+  column-count: 3;
+  text-align: center;
+  text-align: -webkit-center;
+  li {
+    width: 80px;
+    margin-bottom: 15px;
+  }
+}
