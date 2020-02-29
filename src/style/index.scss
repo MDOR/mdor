@@ -126,13 +126,17 @@
   }
 
   @media (max-width: $size-medium) {
-    .flex-container {
-      flex-direction: column-reverse;
+    .skills {
+      column-count: 4;
     }
     .abstract {
       flex-basis: 100%;
+      flex-order: 2;
+      -ms-flex-order: 2;
     }
     .picture {
+      flex-order: 1;
+      -ms-flex-order: 1;
       > img {
         width: 80%;
         display: block;
