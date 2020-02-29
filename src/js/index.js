@@ -2,6 +2,7 @@ import './polyfill/array-from';
 import './polyfill/classlist';
 import 'promise-polyfill/src/polyfill';
 import Typed from 'typed.js';
+import 'normalize.css/normalize.css';
 import '../style/index.scss';
 
 const intro = document.querySelector('.intro');
