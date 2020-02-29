@@ -93,7 +93,17 @@ module.exports = {
               modules: true
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['> 1%', 'last 2 versions']
+                })
+              ]
+            }
+          }
         ],
         include: /\.module\.css$/
       },
