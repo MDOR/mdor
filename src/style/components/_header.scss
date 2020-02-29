@@ -12,8 +12,8 @@ nav {
   }
 
   .nav {
+    @extend %reset-list-bullet;
     max-width: 500px;
-    list-style: none;
     margin: 0;
     display: flex;
     flex: 3 1 auto;

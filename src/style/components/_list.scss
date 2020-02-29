@@ -5,11 +5,38 @@
 }
 
 .skills {
-  column-count: 3;
+  @extend %reset-list-bullet;
+  column-count: 5;
   text-align: center;
   text-align: -webkit-center;
   li {
     width: 80px;
     margin-bottom: 15px;
+  }
+}
+
+.experience {
+  @extend %reset-list-bullet;
+
+  &-item {
+    h3 {
+      @include cssVariable('color', '--blue-transparent', $blue-transparent);
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .date {
+    color: white;
+    font-weight: 300;
+    text-align: right;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+
+  .experience-item {
+    li {
+      margin-bottom: 10px;
+    }
   }
 }

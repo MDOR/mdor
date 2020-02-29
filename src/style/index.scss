@@ -84,12 +84,11 @@
   }
 
   ul {
-    list-style: none;
+    @extend %reset-list-bullet;
     margin: 0;
     padding: 0;
     li {
       padding-bottom: 20px;
-      list-style-image: url(data:0);
     }
   }
 
@@ -113,34 +112,25 @@
 
 .bio {
   .abstract {
-    flex-grow: 2;
-    padding-left: $padding;
-    padding-right: $padding;
+    > * {
+      float: left;
+    }
+
+    > p {
+      width: 70%;
+      padding-left: $padding;
+      padding-right: $padding;
+    }
   }
 
   .picture {
-    > img {
-      width: 100%;
-    }
+    display: inline-block;
+    width: 30%;
   }
 
   @media (max-width: $size-medium) {
     .skills {
       column-count: 4;
-    }
-    .abstract {
-      flex-basis: 100%;
-      flex-order: 2;
-      -ms-flex-order: 2;
-    }
-    .picture {
-      flex-order: 1;
-      -ms-flex-order: 1;
-      > img {
-        width: 80%;
-        display: block;
-        margin: auto;
-      }
     }
   }
 }
