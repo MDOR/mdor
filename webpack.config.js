@@ -100,6 +100,15 @@ module.exports = {
               gifsicle: {
                 interlaced: false
               },
+              svgo: {
+                plugins: [
+                  { removeTitle: true },
+                  { minifyStyles: true },
+                  { removeAttrs: false },
+                  { removeUselessDefs: true },
+                  { removeEmptyAttrs: true }
+                ]
+              },
               webp: {
                 quality: 75
               }
@@ -163,28 +172,39 @@ module.exports = {
             filename: production ? '[name].[hash].css' : '[name].bundle.css',
             inject: true
           }),
-          new ImageminPlugin({
-            plugins: [
-              imageminMozjpeg({ quality: 70 }),
-              imageminSvgo({
-                plugins: [
-                  {
-                    convertColors: true,
-                    cleanupAttrs: true,
-                    removeTitle: true,
-                    minifyStyles: true,
-                    convertStyleToAttrs: true,
-                    removeUselessDefs: true,
-                    removeEmptyAttrs: false
-                  }
-                ]
-              })
-            ]
-          }),
           new CompressionPlugin({
             test: /\.(js|html)$/,
             minRatio: 0
           })
+          /* 
+          The configuration doesn't work properly now
+          new ImageminPlugin({
+            bail: false,
+            cache: true,
+            imageminOptions: {
+              plugins: [
+                ['gifsicle', { interlaced: true }],
+                ['jpegtran', { progressive: true, quality: 70 }],
+                ['optipng', { optimizationLevel: 5 }],
+                [
+                  "imagemin-svgo",,
+                  {
+                    plugins: [
+                      {
+                        removeViewBox: false
+                      },
+                      { removeTitle: true },
+                      { minifyStyles: true },
+                      { removeAttrs: false },
+                      { removeUselessDefs: true },
+                      { removeEmptyAttrs: true }
+                    ]
+                  }
+                ]
+              ]
+            }
+          }),
+          */
         ])
   ],
   devServer,
