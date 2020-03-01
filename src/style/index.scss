@@ -148,11 +148,13 @@
   display: inline-block;
   padding: $padding $padding * 2;
   border: 1px solid $yellow;
+  background: fade-out($red, 1);
+  transition: 0.5s all ease;
 
   &:hover,
   &:active {
     border-color: $red;
-    background: $red;
+    background: fade-in($red, 0.5);
     color: white;
     box-shadow: 0 0 5px $red;
   }
