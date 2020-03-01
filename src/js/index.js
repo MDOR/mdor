@@ -106,6 +106,7 @@ const fragment = document.createDocumentFragment();
   const img = document.createElement('img');
   img.src = `img/technology/${skill}`;
   img.className = 'responsive-img';
+  img.setAttribute('role', 'presentation');
   img.loading = 'lazy';
   li.appendChild(img);
   fragment.appendChild(li);
