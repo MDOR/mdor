@@ -143,3 +143,17 @@
     }
   }
 }
+
+.contact-me-button {
+  display: inline-block;
+  padding: $padding $padding * 2;
+  border: 1px solid $yellow;
+
+  &:hover,
+  &:active {
+    border-color: $red;
+    background: $red;
+    color: white;
+    box-shadow: 0 0 5px $red;
+  }
+}
