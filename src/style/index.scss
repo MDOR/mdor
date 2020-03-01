@@ -157,3 +157,50 @@
     box-shadow: 0 0 5px $red;
   }
 }
+
+.picture-front {
+  display: none;
+}
+
+/* Include Merdia print*/
+@media print {
+  body {
+    color: #666 !important;
+  }
+  .author-name {
+    font-size: 80px !important;
+  }
+  .intro {
+    padding: 100px !important;
+  }
+  .section {
+    width: 90%;
+  }
+  .picture-front {
+    width: 300px;
+    margin: auto;
+    display: block;
+  }
+  .experience-item,
+  .abstract {
+    font-size: 0.8rem !important;
+  }
+  .experience-item h3 span:first-child {
+    color: $yellow;
+    font-size: 0.85rem !important;
+    flex-grow: 2;
+  }
+  header,
+  .contact,
+  .picture,
+  .optional-contact ul {
+    display: none !important;
+  }
+  .skills {
+    column-count: 6 !important;
+    margin-bottom: 50px;
+    li {
+      width: 50px;
+    }
+  }
+}
