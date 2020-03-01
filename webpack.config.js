@@ -1,12 +1,13 @@
 const path = require('path');
 const { argv } = require('yargs');
 
-const { watch = false, prod = false, port = 8080 } = argv;
+const { watch = false, production = false, port = 8080 } = argv;
 
 /*  Webpack */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlCriticalPlugin = require('html-critical-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const paths = {
@@ -15,7 +16,7 @@ const paths = {
 };
 
 console.log('================================');
-console.log(`Production: ${prod}`);
+console.log(`Production: ${production}`);
 console.log(`Watch:      ${watch}`);
 console.log('================================');
 
@@ -41,7 +42,7 @@ module.exports = {
   entry: [path.resolve(paths.source, 'js/index.js')],
   output: {
     path: paths.target,
-    filename: prod ? '[name].[hash].js' : '[name].bundle.js'
+    filename: production ? '[name].[hash].js' : '[name].bundle.js'
   },
   watch,
   watchOptions: {
@@ -49,7 +50,7 @@ module.exports = {
     ignored: /node_modules/
   },
   devtool: 'source-map',
-  mode: prod ? 'production' : 'development',
+  mode: production ? 'production' : 'development',
   target: 'web',
   stats: 'errors-only',
   optimization: {
@@ -105,7 +106,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['css-loader']
+        use: [
+          ...(!production ? [] : [MiniCssExtractPlugin.loader]),
+          'css-loader'
+        ]
       },
       {
         test: /\.scss$/,
@@ -130,7 +134,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+    ...(!production ? [] : [new MiniCssExtractPlugin()])
   ],
   devServer,
   watchOptions: {
