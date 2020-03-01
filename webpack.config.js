@@ -7,7 +7,6 @@ const { watch = false, production = false, port = 8080 } = argv;
 /*  Webpack */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlCriticalPlugin = require('html-critical-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminSvgo = require('imagemin-svgo');
@@ -114,36 +113,26 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
+        test: /\.s(c|a)ss$/i,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true
-            }
-          },
+          ...(!production ? ['style-loader'] : [MiniCssExtractPlugin.loader]),
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
               plugins: [require('autoprefixer')()]
             }
-          }
-        ],
-        include: /\.module\.css$/
+          },
+          'sass-loader'
+        ]
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
           ...(!production ? [] : [MiniCssExtractPlugin.loader]),
           'css-loader'
         ]
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -167,14 +156,13 @@ module.exports = {
         minifyJS: true
       }
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    }),
     ...(!production
       ? []
       : [
-          new MiniCssExtractPlugin(),
+          new MiniCssExtractPlugin({
+            filename: production ? '[name].[hash].css' : '[name].bundle.css',
+            inject: true
+          }),
           new ImageminPlugin({
             plugins: [
               imageminMozjpeg({ quality: 70 }),

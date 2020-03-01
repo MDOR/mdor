@@ -43,9 +43,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^5.1.0",
-    "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
-    "html-webpack-template": "^6.2.0",
     "husky": "^3.1.0",
     "image-webpack-loader": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
@@ -64,8 +62,7 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
-    "yargs": "^15.0.2",
-    "zlib": "^1.0.5"
+    "yargs": "^15.0.2"
   },
   "scripts": {
     "build": "webpack",
