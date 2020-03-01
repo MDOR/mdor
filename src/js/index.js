@@ -113,3 +113,5 @@ const fragment = document.createDocumentFragment();
 });
 
 skills.appendChild(fragment);
+
+document.querySelector('.footer-date').innerText = new Date().getFullYear();
