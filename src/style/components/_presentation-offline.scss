@@ -1,0 +1,25 @@
+.presentation-offine {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  background: $gray-dark;
+  z-index: 100;
+
+  .message {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 300px;
+    height: 166px;
+    padding-top: 15px;
+    font-size: 58px;
+    font-weight: 600;
+    color: $yellow;
+    text-shadow: 5px 0 cyan, -5px 0 black;
+  }
+}
