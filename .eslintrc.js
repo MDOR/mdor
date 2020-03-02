@@ -10,31 +10,9 @@ module.exports = {
   },
   plugins: ['prettier', 'react-hooks'],
   extends: ['airbnb', 'prettier', 'prettier/react'],
-  ecmaFeatures: {
-    arrowFunctions: true,
-    binaryLiterals: true,
-    blockBindings: true,
-    classes: true,
-    defaultParams: true,
-    destructuring: true,
-    forOf: true,
-    generators: true,
-    modules: true,
-    objectLiteralComputedProperties: true,
-    objectLiteralDuplicateProperties: true,
-    objectLiteralShorthandMethods: true,
-    objectLiteralShorthandProperties: true,
-    octalLiterals: true,
-    regexUFlag: true,
-    regexYFlag: true,
-    spread: true,
-    superInFunctions: true,
-    templateStrings: true,
-    unicodeCodePointEscapes: true,
-    globalReturn: true,
-    jsx: true
-  },
   rules: {
-    'padded-blocks': 0
+    'no-unused-vars': 'error',
+    'padded-blocks': 'error',
+    'import/prefer-default-export': 0
   }
 };
