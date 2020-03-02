@@ -1,0 +1,17 @@
+@keyframes move-beginning {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+@keyframes add-shadow {
+  0% {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+}

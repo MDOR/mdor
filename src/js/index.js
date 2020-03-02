@@ -56,7 +56,7 @@ function authorName() {
   });
 }
 
-setTimeout(authorName, 10);
+setTimeout(authorName, 50);
 const fragment = document.createDocumentFragment();
 [
   'angular.svg',

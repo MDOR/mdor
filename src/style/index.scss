@@ -1,5 +1,6 @@
 @import '~normalize.css/normalize.css';
 @import 'variables';
+@import 'animations';
 @import 'reset/custom-native-reset';
 @import 'components';
 
@@ -38,7 +39,7 @@
     @include cssVariable('color', '--yellow', #{$yellow});
     margin: 0;
   }
-
+  &:after,
   &:before {
     content: attr(data-message);
     position: absolute;
@@ -50,9 +51,25 @@
     text-align: center;
     opacity: 1;
     transition: 5s opacity ease;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  &:before {
+    animation-name: move-beginning;
+    z-index: 2;
+  }
+
+  &:after {
+    animation-name: add-shadow;
+    z-index: 1;
+    transform: translate(15px, 15px);
+    color: rgba(0, 0, 0, 0.5);
   }
 
   &-before-ready {
+    &:after,
     &:before {
       opacity: 0.005;
     }
