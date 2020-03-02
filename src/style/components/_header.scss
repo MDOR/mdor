@@ -1,6 +1,28 @@
 header {
   padding: $padding;
   color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  @include cssVariable('background-color', '--gray-dark', $gray-dark);
+  z-index: 10;
+
+  &.scroll {
+    box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.85);
+  }
+
+  @media (max-width: $size-medium) {
+    .logo {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .nav-list {
+      margin: auto !important;
+      width: 100%;
+      font-size: 0.75rem;
+    }
+  }
 }
 
 nav {
@@ -11,7 +33,7 @@ nav {
     flex: 1 1 auto;
   }
 
-  .nav {
+  .nav-list {
     @extend %reset-list-bullet;
     max-width: 500px;
     margin: 0;

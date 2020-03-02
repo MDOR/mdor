@@ -2,6 +2,7 @@ import './polyfill/array-from';
 import './polyfill/classlist';
 import 'promise-polyfill/src/polyfill';
 import Typed from 'typed.js';
+import { debouncer } from './utils';
 import '../style/index.scss';
 
 const intro = document.querySelector('.intro');
@@ -19,7 +20,7 @@ function setWindowSize() {
 }
 
 window.addEventListener('DOMContentLoaded', setWindowSize);
-window.addEventListener('resize', setWindowSize);
+window.addEventListener('resize', debouncer(setWindowSize));
 
 function authorTitle() {
   // eslint-disable-next-line no-new
@@ -45,7 +46,7 @@ function authorName() {
   // eslint-disable-next-line no-new
   new Typed('.author-name > .name', {
     ...typedConfig,
-    strings: ['', 'Marco Domínguez'],
+    strings: ['', 'Marco Antonio Domínguez Rueda'],
     onBegin() {
       intro.classList.add('intro-before-ready');
     },
@@ -104,9 +105,15 @@ const fragment = document.createDocumentFragment();
 ].forEach(skill => {
   const li = document.createElement('li');
   const img = document.createElement('img');
+  const alt = skill
+    .replace('.svg', '')
+    .split('-')
+    .map(st => st.charAt(0).toUpperCase() + st.slice(1))
+    .join(' ');
   img.src = `img/technology/${skill}`;
   img.className = 'responsive-img';
   img.setAttribute('role', 'presentation');
+  img.setAttribute('title', alt);
   img.loading = 'lazy';
   li.appendChild(img);
   fragment.appendChild(li);
@@ -115,3 +122,24 @@ const fragment = document.createDocumentFragment();
 skills.appendChild(fragment);
 
 document.querySelector('.footer-date').innerText = new Date().getFullYear();
+
+/* header handlers */
+const header = document.querySelector('header');
+
+const getScroll = () => {
+  const doc = document.documentElement;
+  return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+};
+
+function headerScrollEvent() {
+  const top = getScroll();
+
+  if (top > 0) {
+    header.classList.add('scroll');
+  } else {
+    header.classList.remove('scroll');
+  }
+}
+
+window.addEventListener('DOMContentLoaded', headerScrollEvent);
+document.addEventListener('scroll', debouncer(headerScrollEvent));

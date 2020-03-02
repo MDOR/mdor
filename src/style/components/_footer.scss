@@ -1,6 +1,17 @@
 footer {
   font-size: 0.8rem;
   padding: $padding $padding * 2;
+
+  ul {
+    @extend %reset-list-bullet;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .get-the-code img {
+    height: 20px;
+    vertical-align: text-bottom;
+  }
 }
 
 .footer-date {

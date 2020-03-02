@@ -45,7 +45,9 @@
     font-weight: bold;
     font-size: 120px;
     top: 33%;
-    left: 25%;
+    left: 0;
+    width: 100%;
+    text-align: center;
     opacity: 1;
     transition: 5s opacity ease;
   }
@@ -56,10 +58,15 @@
     }
   }
 
+  @media (max-width: 978px) {
+    padding-top: 200px;
+    padding-bottom: 200px;
+  }
+
   @media (max-width: $size-medium) {
-    padding: 130px 15px;
+    padding: 350px 10px;
     &:before {
-      font-size: 50px;
+      font-size: 80px;
     }
     .author-name,
     .author-title {
@@ -69,7 +76,7 @@
 }
 
 .optional-contact {
-  @media screen and (max-width: $size-large) {
+  @media screen and (max-width: 1383px) {
     display: none;
   }
 
@@ -178,6 +185,9 @@
   .intro {
     padding: 100px !important;
   }
+  .bio {
+    margin-top: 100px;
+  }
   .section {
     width: 90%;
   }
@@ -186,8 +196,9 @@
     margin: auto;
     display: block;
   }
+  .abstract,
   .experience-item,
-  .abstract {
+  .experience-item li {
     font-size: 0.8rem !important;
   }
   .experience-item h3 span:first-child {
@@ -198,6 +209,7 @@
   header,
   .contact,
   .picture,
+  .get-the-code,
   .optional-contact ul {
     display: none !important;
   }
