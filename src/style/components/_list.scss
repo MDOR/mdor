@@ -12,6 +12,9 @@
   li {
     width: 80px;
     margin-bottom: 15px;
+    &:hover {
+      animation: rotate 1s linear infinite;
+    }
   }
 }
 
