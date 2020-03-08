@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'no-unused-vars': 'error',
     'padded-blocks': 'error',
+    'consistent-return': 0,
     'import/prefer-default-export': 0
   }
 };
