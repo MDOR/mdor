@@ -2,7 +2,7 @@ import './polyfill/array-from';
 import './polyfill/classlist';
 import 'promise-polyfill/src/polyfill';
 import Typed from 'typed.js';
-import { debouncer } from './utils';
+import { debouncer, scrollTo } from './utils';
 import '../style/index.scss';
 
 const intro = document.querySelector('.intro');
@@ -26,7 +26,7 @@ function authorTitle() {
   // eslint-disable-next-line no-new
   new Typed('.author-title > .title', {
     ...typedConfig,
-    strings: ['', 'A Software Engineer'],
+    strings: ['', 'Software Engineer'],
     onComplete() {
       intro.classList.add('intro-ready');
       [].map
@@ -46,7 +46,7 @@ function authorName() {
   // eslint-disable-next-line no-new
   new Typed('.author-name > .name', {
     ...typedConfig,
-    strings: ['', 'Marco Antonio Domínguez Rueda'],
+    strings: ['', 'Marco Antonio Domínguez'],
     onBegin() {
       intro.classList.add('intro-before-ready');
     },
@@ -115,6 +115,7 @@ const fragment = document.createDocumentFragment();
   img.setAttribute('role', 'presentation');
   img.setAttribute('title', alt);
   img.loading = 'lazy';
+  li.setAttribute('data-title', alt);
   li.appendChild(img);
   fragment.appendChild(li);
 });
@@ -175,3 +176,11 @@ if (hidden) {
     }, 1500);
   });
 }
+
+[...document.querySelectorAll('.nav a')].forEach(e => {
+  e.addEventListener('click', event => {
+    event.preventDefault();
+    const destId = event.target.getAttribute('data-id');
+    scrollTo(document.querySelector(destId));
+  });
+});

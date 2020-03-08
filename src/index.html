@@ -80,11 +80,19 @@
     <header>
       <div class="content-container">
         <nav class="nav">
-          <div class="logo">Marco Dmz</div>
+          <div class="logo">
+            <a href="#start" data-id="#start"> Marco Dmz</a>
+          </div>
           <ul class="nav-list">
-            <li>About</li>
-            <li>Experience</li>
-            <li>Contact</li>
+            <li>
+              <a href="#about" data-id="#about"> About</a>
+            </li>
+            <li>
+              <a href="#experience" data-id="#experience"> Experience</a>
+            </li>
+            <li>
+              <a href="#contact" data-id="#contact"> Contact</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -93,6 +101,7 @@
       class="section content-container intro"
       data-message="Who am I?"
       style="min-height: 400px;"
+      id="start"
     >
       <h2 class="author-name">
         <span class="name"></span>
@@ -117,7 +126,7 @@
         role="presentation"
       />
     </section>
-    <section class="section content-container bio">
+    <section class="section content-container bio" id="about">
       <h2 class="section-title"><span>About Me</span></h2>
       <article>
         <div class="abstract clearfix">
@@ -166,7 +175,7 @@
         </div>
       </article>
     </section>
-    <section class="section content-container">
+    <section class="section content-container" id="experience">
       <h2 class="section-title"><span>Experience</span></h2>
       <ul class="experience">
         <li class="experience-item">
@@ -337,7 +346,7 @@
         >Let's Talk</a
       >
     </section>
-    <section class="content-container optional-contact">
+    <section class="content-container optional-contact" id="contact">
       <div class="right">
         <a
           href="mailto:madmzr@gmail.com"

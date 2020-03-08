@@ -25,8 +25,11 @@ body {
   }
 }
 
-p {
-  line-height: 1.2rem;
+a,
+p,
+li {
+  margin-top: 0;
+  line-height: 28px;
 }
 
 a {

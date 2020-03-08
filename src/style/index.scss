@@ -1,4 +1,7 @@
-@import '~normalize.css/normalize.css';
+@import '../../node_modules/normalize-scss/sass/normalize';
+
+@include normalize();
+
 @import 'variables';
 @import 'animations';
 @import 'reset/custom-native-reset';
@@ -29,7 +32,6 @@
     color: white;
     margin: 0;
     font-weight: 300;
-    text-shadow: 0 0 0 transparent, 0 0 5px $blue-transparent, 0 0 10px white;
   }
   .author-title {
     @include cssVariable(
@@ -196,10 +198,17 @@
 /* Include Merdia print*/
 @media print {
   body {
+    font-size: 15px;
     color: #666 !important;
   }
+  a,
+  p,
+  li {
+    line-height: 18px;
+  }
   .author-name {
-    font-size: 50px !important;
+    font-size: 48px !important;
+    text-align: center;
   }
   .intro {
     padding: 100px !important;
@@ -233,10 +242,20 @@
     display: none !important;
   }
   .skills {
-    column-count: 6 !important;
+    column-count: 5 !important;
     margin-bottom: 50px;
     li {
-      width: 50px;
+      width: unset;
+      &:after {
+        content: attr(data-title);
+        text-align: left;
+      }
+      img {
+        display: none;
+      }
     }
+  }
+  .experience-item {
+    margin-bottom: 10px;
   }
 }

@@ -12,6 +12,8 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminSvgo = require('imagemin-svgo');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const paths = {
   source: path.join(__dirname, 'src'),
@@ -61,16 +63,16 @@ module.exports = {
   target: 'web',
   stats: 'errors-only',
   optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // Must be set to true if using source-maps in production
+        terserOptions: {
+          // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
         }
-      }
-    }
+      })
+    ]
   },
   module: {
     rules: [
@@ -181,7 +183,13 @@ module.exports = {
             cache: true,
             plugins: [imageminMozjpeg({ quality: 70 })]
           })
-        ])
+        ]),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.scss$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    })
   ],
   devServer,
   watchOptions: {
