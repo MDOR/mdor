@@ -68,8 +68,9 @@
   "scripts": {
     "build": "webpack",
     "build:prod": "webpack --production",
-    "watch": "webpack-dev-server  --progress --colors --hot --inline",
+    "watch": "webpack-dev-server --progress --colors --hot --inline",
+    "watch:prod": "webpack-dev-server --progress --colors --hot --inline --production",
     "prettify": "prettier --list-different --write \"./*.{js,jsx,sass,scss,css,html}\" \"./**/*.{js,jsx,sass,scss,css,html}\"",
-    "lint": "eslint ./ --ext=.js,.jsx  --fix"
+    "lint": "eslint ./ --ext=.js,.jsx --fix"
   }
 }
