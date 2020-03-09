@@ -1,20 +1,19 @@
 const path = require('path');
 const { argv } = require('yargs');
 const imageminMozjpeg = require('imagemin-mozjpeg');
-
-const { watch = false, production = false, port = 8080 } = argv;
+const imageminSvgo = require('imagemin-svgo');
 
 /*  Webpack */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const imageminSvgo = require('imagemin-svgo');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const { watch = false, production = false, port = 8080 } = argv;
 const paths = {
   source: path.join(__dirname, 'src'),
   target: path.join(__dirname, 'docs')
@@ -181,7 +180,12 @@ module.exports = {
           new ImageminPlugin({
             bail: false,
             cache: true,
-            plugins: [imageminMozjpeg({ quality: 70 })]
+            plugins: [
+              imageminMozjpeg({ quality: 70 }),
+              imageminSvgo({
+                plugins: [{ removeViewBox: false }, { removeDimensions: true }]
+              })
+            ]
           })
         ]),
     new OptimizeCssAssetsPlugin({
