@@ -39,7 +39,7 @@ if (watch) {
     liveReload: true,
     port,
     stats: 'errors-only',
-    after: function(app, server, compiler) {
+    after: function (app, server, compiler) {
       console.log('Ready', app, server, compiler);
       require('opn')(`http://localhost:${port}`);
     }
@@ -151,12 +151,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin([
-      {
-        from: path.resolve(paths.source, 'img'),
-        to: path.resolve(paths.target, 'img')
-      }
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(paths.source, 'img'),
+          to: path.resolve(paths.target, 'img')
+        }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(paths.source, 'index.html'),
       minify: Boolean(production) && {
