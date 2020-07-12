@@ -19,9 +19,14 @@
     width: 100%;
     min-width: 100%;
     z-index: 100;
-    @media (min-width: 978px) {
+    @media (min-width: $size-large) {
       padding-left: 10%;
       padding-right: 10%;
+    }
+
+    @media (min-width: $size-small) {
+      padding-left: 5%;
+      padding-right: 5%;
     }
 
     > *:not(&) {

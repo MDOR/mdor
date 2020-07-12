@@ -9,7 +9,7 @@ const intro = document.querySelector('.intro');
 const skills = document.querySelector('.skills');
 
 const typedConfig = {
-  typeSpeed: 100,
+  typeSpeed: 80,
   backSpeed: 40,
   loop: false,
   showCursor: false
