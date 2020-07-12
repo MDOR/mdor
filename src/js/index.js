@@ -38,6 +38,7 @@ function authorTitle() {
           el.style.opacity = 1;
           /* eslint-enable  no-param-reassign */
         });
+      document.body.className = '';
     }
   });
 }
@@ -143,38 +144,6 @@ function headerScrollEvent() {
 
 window.addEventListener('DOMContentLoaded', headerScrollEvent);
 document.addEventListener('scroll', debouncer(headerScrollEvent));
-
-let hidden;
-let visibilityChange;
-
-if (typeof document.hidden !== 'undefined') {
-  hidden = 'hidden';
-  visibilityChange = 'visibilitychange';
-} else if (typeof document.msHidden !== 'undefined') {
-  hidden = 'msHidden';
-  visibilityChange = 'msvisibilitychange';
-} else if (typeof document.webkitHidden !== 'undefined') {
-  hidden = 'webkitHidden';
-  visibilityChange = 'webkitvisibilitychange';
-}
-
-if (hidden) {
-  const { documentElement } = document;
-  const offlineContainer = document.querySelector('.presentation-offine');
-
-  document.addEventListener(visibilityChange, function visibilityHandler() {
-    if (document[hidden]) {
-      documentElement.style.overflow = 'hidden';
-      offlineContainer.style.visibility = 'visible';
-      return;
-    }
-
-    setTimeout(() => {
-      documentElement.style.overflow = 'auto';
-      offlineContainer.style.visibility = 'hidden';
-    }, 1500);
-  });
-}
 
 [...document.querySelectorAll('.nav a')].forEach(e => {
   e.addEventListener('click', event => {

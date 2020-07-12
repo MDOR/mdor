@@ -13,6 +13,22 @@
   padding: 300px 15px;
   overflow: hidden;
 
+  body.loading & {
+    position: fixed;
+    @include cssVariable('background-color', '--gray-dark', $gray-dark);
+    width: 100%;
+    min-width: 100%;
+    z-index: 100;
+    @media (min-width: 978px) {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    > *:not(&) {
+      display: none;
+    }
+  }
+
   &-paragraph {
     margin-left: auto;
     margin-right: auto;
@@ -193,6 +209,11 @@
 
 .picture-front {
   display: none;
+}
+
+/* Tools */
+.tooling {
+  padding-top: 20px;
 }
 
 /* Include Merdia print*/

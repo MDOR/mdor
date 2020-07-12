@@ -59,37 +59,31 @@
     />
     <title>Marco Antonio Domínguez Rueda</title>
     <style>
-      @media (min-width: 1240px)
-
-      .content-container {
-          display: block;
-          margin: auto;
-      }
-
+      body.loading > *:not(.intro) {
+        display: none;
       }
       .optional-contact > * {
-            height: 340px;
-          width: 40px;
-          position: fixed;
+        height: 340px;
+        width: 40px;
+        position: fixed;
       }
       .optional-contact .right {
-          right: 40px;
+        right: 40px;
       }
       .optional-contact .email {
-          writing-mode: vertical-lr;
-          -ms-writing-mode: tb-rl;
-          direction: rtl;
-          margin-bottom: 20px;
+        writing-mode: vertical-lr;
+        -ms-writing-mode: tb-rl;
+        direction: rtl;
+        margin-bottom: 20px;
       }
-      <style>
       a {
-          color: #efbb35;
-          transition: 0.5s color ease;
-          text-decoration: none;
+        color: #efbb35;
+        transition: 0.5s color ease;
+        text-decoration: none;
       }
     </style>
   </head>
-  <body style="background: #222831; color: #f2f3f5;">
+  <body style="background: #222831; color: #f2f3f5;" class="loading">
     <header>
       <div class="content-container">
         <nav class="nav">
@@ -397,11 +391,6 @@
         </ul>
       </div>
     </section>
-    <div class="presentation-offine" style="visibility: hidden;">
-      <div class="message text-center">
-        Welcome Back!
-      </div>
-    </div>
     <footer>
       <div class="content-container text-center">
         <ul>
