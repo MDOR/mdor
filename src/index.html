@@ -53,14 +53,48 @@
       sizes="16x16"
       href="img/favicon/favicon-16x16.png"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css?family=Spartan:400,600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Spartan:400,600&display=swap"
+      />
+    </noscript>
     <title>Marco Antonio Domínguez Rueda</title>
     <style>
       body.loading > *:not(.intro) {
         display: none;
+      }
+      body.loading .intro-paragraph {
+        display: none;
+      }
+      body.loading .intro img {
+        display: none;
+      }
+      .content-container {
+        max-width: 1240px;
+      }
+      .no-js-intro {
+        font-size: 60px;
+        color: white;
+        margin: 0;
+        font-weight: 300;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 0;
+        right: 0;
+        width: 350px;
+        height: 300px;
+        text-align: center;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 1);
       }
       .optional-contact > * {
         height: 340px;
@@ -132,6 +166,11 @@
         loading="lazy"
         role="presentation"
       />
+      <noscript>
+        <span class="no-js-intro">
+          Please Enable JavaScript
+        </span>
+      </noscript>
     </section>
     <section class="section content-container bio" id="about">
       <h2 class="section-title"><span>About Me</span></h2>

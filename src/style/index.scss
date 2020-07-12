@@ -63,6 +63,7 @@
     @include cssVariable('color', '--yellow', #{$yellow});
     margin: 0;
   }
+
   &:after,
   &:before {
     content: attr(data-message);
