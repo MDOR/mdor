@@ -10,6 +10,8 @@ footer {
 
   .get-the-code img {
     height: 20px;
+    // necessary for IE
+    width: 20px;
     vertical-align: text-bottom;
   }
 }

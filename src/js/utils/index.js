@@ -30,11 +30,7 @@ const getWindowHeight = () =>
   documentElement.clientHeight ||
   document.getElementsByTagName('body')[0].clientHeight;
 
-export const scrollTo = (dest, duration = 300, cb) => {
-  const start = window.pageYOffset;
-  const startTime = new Date().getTime();
-  const isCallbackAFuction = typeof cb === 'function';
-
+export const scrollTo = dest => {
   const documentHeight = getDocumentHeight();
   const windowHeight = getWindowHeight();
   const destinationOffset = typeof dest === 'number' ? dest : dest.offsetTop;
@@ -42,36 +38,13 @@ export const scrollTo = (dest, duration = 300, cb) => {
     documentHeight - destinationOffset < windowHeight
       ? documentHeight - windowHeight
       : destinationOffset;
-  const destinationOffsetToScrollRounded = Math.round(
-    destinationOffsetToScroll
-  );
 
-  if ('requestAnimationFrame' in window === false) {
-    window.scroll(0, destinationOffsetToScrollRounded);
-    return isCallbackAFuction && cb();
+  try {
+    window.scroll({
+      top: destinationOffsetToScroll,
+      behavior: 'smooth'
+    });
+  } catch (e) {
+    window.scroll(0, destinationOffsetToScroll);
   }
-
-  let animationFrame;
-  function cancelScroll() {
-    cancelAnimationFrame(animationFrame);
-  }
-
-  function scroll() {
-    const now = new Date().getTime();
-    const time = Math.min(1, (now - startTime) / duration);
-    window.scroll(
-      0,
-      Math.ceil(time * (destinationOffsetToScrollRounded - start) + start)
-    );
-
-    if (window.pageYOffset === destinationOffsetToScrollRounded) {
-      window.removeEventListener('resize', cancelScroll);
-      return isCallbackAFuction && cb();
-    }
-
-    animationFrame = requestAnimationFrame(scroll);
-  }
-
-  scroll();
-  window.addEventListener('resize', cancelScroll);
 };

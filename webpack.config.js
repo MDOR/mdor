@@ -24,27 +24,34 @@ console.log(`Production: ${production}`);
 console.log(`Watch:      ${watch}`);
 console.log('================================');
 
-function gzipMaxCompression(buffer, done) {
-  return zlib.gzip(buffer, { level: 9 }, done);
-}
-
-let devServer = {};
-
-if (watch) {
-  devServer = {
+const devServer =
+  (watch && {
+    // Remove useless webpack dev server logs
+    clientLogLevel: 'none',
+    // Enable gzip compression of generated files
+    compress: true,
+    // Serving files to the target folders and watch content
     contentBase: paths.target,
     watchContentBase: true,
-    compress: true,
+
+    quiet: true,
     hot: true,
     liveReload: true,
     port,
     stats: 'errors-only',
-    after: function (app, server, compiler) {
-      console.log('Ready', app, server, compiler);
-      require('opn')(`http://localhost:${port}`);
+    open: true,
+    watchOptions: {
+      ignored: /node_modules/
     }
-  };
-}
+  }) ||
+  {};
+
+const htmlMinifyConfig = Boolean(production) && {
+  collapseWhitespace: true,
+  collapseInlineTagWhitespace: true,
+  minifyCSS: true,
+  minifyJS: true
+};
 
 module.exports = {
   entry: [path.resolve(paths.source, 'js/index.js')],
@@ -55,7 +62,7 @@ module.exports = {
   watch,
   watchOptions: {
     aggregateTimeout: 600,
-    ignored: /node_modules/
+    ignored: ['node_modules/**']
   },
   devtool: 'source-map',
   mode: production ? 'production' : 'development',
@@ -147,7 +154,17 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.jpeg', '.jpg', '.png', '.js', '.ts', '.jsx', 'scss', 'css']
+    extensions: [
+      '.jpeg',
+      '.jpg',
+      '.png',
+      '.js',
+      '.ts',
+      '.jsx',
+      'scss',
+      'css',
+      'html'
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -161,12 +178,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(paths.source, 'index.html'),
-      minify: Boolean(production) && {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-        minifyCSS: true,
-        minifyJS: true
-      }
+      minify: htmlMinifyConfig
     }),
     ...(!production
       ? []
@@ -197,9 +209,5 @@ module.exports = {
       canPrint: true
     })
   ],
-  devServer,
-  watchOptions: {
-    poll: true,
-    ignored: /node_modules/
-  }
+  devServer
 };
