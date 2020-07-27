@@ -87,6 +87,7 @@ const fragment = document.createDocumentFragment();
   'grunt',
   'jquery',
   'react',
+  'nextjs',
   'browserify',
   'prettier',
   'puppeteer',
