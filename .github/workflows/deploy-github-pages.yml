@@ -17,6 +17,7 @@ jobs:
 
       - name: Deploy mdor.dev to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        with:
           # tool specific
           allow_empty_commit: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
