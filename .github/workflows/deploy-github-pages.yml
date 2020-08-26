@@ -12,11 +12,15 @@ jobs:
       - name: Install
         run: |
           cd ${HOME}
+          pwd
+          ls -la
           npm ci
 
       - name: Build Project
         run: |
           cd ${HOME}
+          pwd
+          ls -la
           npm run build:prod
 
       - name: Deploy mdor.dev to GitHub Pages
