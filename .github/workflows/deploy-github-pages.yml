@@ -1,0 +1,28 @@
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - test/github-actions
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Install
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build:prod
+
+      - name: Deploy mdor.dev to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+          # tool specific
+          allow_empty_commit: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # deploy specific
+          destination_dir: ./
+          publish_dir: ./docs
+          publish_branch: mdor-page
+          # page specific
+          cname: mdor.dev
