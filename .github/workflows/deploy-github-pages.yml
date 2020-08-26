@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Install
         run: |
+          pwd
+          ls -la
           cd ${HOME}
           pwd
           ls -la
@@ -18,6 +20,8 @@ jobs:
 
       - name: Build Project
         run: |
+          pwd
+          ls -la
           cd ${HOME}
           pwd
           ls -la
