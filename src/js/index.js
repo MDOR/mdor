@@ -153,9 +153,3 @@ document.addEventListener('scroll', debouncer(headerScrollEvent));
     scrollTo(document.querySelector(destId));
   });
 });
-
-if (typeof window !== 'undefined') {
-  window.app = {
-    version: '0.1'
-  };
-}
