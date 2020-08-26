@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Install
-        run: npm ci
+        run: |
+          cd ${HOME}
+          npm ci
 
       - name: Build Project
-        run: npm run build:prod
+        run: |
+          cd ${HOME}
+          npm run build:prod
 
       - name: Deploy mdor.dev to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
