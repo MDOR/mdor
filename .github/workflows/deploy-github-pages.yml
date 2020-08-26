@@ -9,20 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: Install
         run: |
-          pwd
-          ls -la
-          cd ${HOME}
           pwd
           ls -la
           npm ci
 
       - name: Build Project
         run: |
-          pwd
-          ls -la
-          cd ${HOME}
           pwd
           ls -la
           npm run build:prod
