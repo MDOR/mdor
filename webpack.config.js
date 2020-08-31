@@ -16,7 +16,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { watch = false, production = false, port = 8080 } = argv;
 const paths = {
   source: path.join(__dirname, 'src'),
-  target: path.join(__dirname, 'docs')
+  target: path.join(__dirname, 'dist')
 };
 
 console.log('================================');
@@ -173,6 +173,10 @@ module.exports = {
         {
           from: path.resolve(paths.source, 'img'),
           to: path.resolve(paths.target, 'img')
+        },
+        {
+          from: path.resolve(paths.source, 'docs'),
+          to: path.resolve(paths.target, 'docs')
         }
       ]
     }),
