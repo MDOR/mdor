@@ -27,7 +27,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # deploy specific
           destination_dir: ./
-          publish_dir: ./docs
+          publish_dir: ./dist
           publish_branch: mdor-page
           # page specific
           cname: mdor.dev

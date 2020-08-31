@@ -13,8 +13,7 @@ export const debouncer = (fn, time = 30) => {
   };
 };
 
-const documentBody = document.body;
-const { documentElement } = document;
+const { body: documentBody, documentElement } = document;
 
 const getDocumentHeight = () =>
   Math.max(

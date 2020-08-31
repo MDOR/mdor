@@ -70,12 +70,21 @@
     <style>
       body.loading > *:not(.intro) {
         display: none;
+        max-width: 1240px;
       }
       body.loading .intro-paragraph {
         display: none;
       }
       body.loading .intro img {
         display: none;
+      }
+      body.loading .intro > * {
+        max-width: 1240px;
+      }
+      body.loading .intro > .intro-paragraph {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 800px;
       }
       .content-container {
         max-width: 1240px;
@@ -104,28 +113,9 @@
         text-align: center;
         text-shadow: 0 0 20px rgba(0, 0, 0, 1);
       }
-      .optional-contact > * {
-        height: 340px;
-        width: 40px;
-        position: fixed;
-      }
-      .optional-contact .right {
-        right: 40px;
-      }
-      .optional-contact .email {
-        writing-mode: vertical-lr;
-        -ms-writing-mode: tb-rl;
-        direction: rtl;
-        margin-bottom: 20px;
-      }
-      a {
-        color: #efbb35;
-        transition: 0.5s color ease;
-        text-decoration: none;
-      }
     </style>
   </head>
-  <body style="background: #222831; color: #f2f3f5;" class="loading">
+  <body style="background: #222831; color: #f2f3f5" class="loading">
     <header>
       <div class="content-container">
         <nav class="nav">
@@ -149,7 +139,7 @@
     <section
       class="section content-container intro"
       data-message="Who am I?"
-      style="min-height: 400px;"
+      style="min-height: 400px"
       id="start"
     >
       <h2 class="author-name">
@@ -158,26 +148,15 @@
       <div class="author-title text-right">
         <span class="title"></span>
       </div>
-      <p class="intro-paragraph text-center">
-        I'm from Aguascalientes, Mexico! now based on New York. Most of my
-        experience is related to code websites and applications, using
-        &#160;<b>JavaScript</b>.
-      </p>
-      <p class="intro-paragraph text-center">
-        I love to code&#160; <b>high-performance</b>&#160; solutions, using best
-        practices and cutting edge technology.
-      </p>
+      <p class="intro-paragraph text-center"></p>
       <img
         src="img/profile.jpeg"
-        alt=""
+        alt="Profile Picture"
         class="picture-front"
-        loading="lazy"
         role="presentation"
       />
       <noscript>
-        <span class="no-js-intro">
-          Please Enable JavaScript
-        </span>
+        <span class="no-js-intro"> Please Enable JavaScript </span>
       </noscript>
     </section>
     <section class="section content-container bio" id="about">
@@ -313,9 +292,7 @@
               keep the code stable and aligned to the good practices of the
               market.
             </li>
-            <li>
-              Automate the process to build and deploy.
-            </li>
+            <li>Automate the process to build and deploy.</li>
           </ul>
         </li>
         <li class="experience-item">
@@ -434,6 +411,18 @@
                 role="presentation"
                 loading="lazy"
             /></a>
+          </li>
+          <li>
+            <a
+              href="http://mdor.dev/docs/cv.pdf"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              aria-label="Download CV"
+              alt="Download CV"
+              download
+            >
+              💾
+            </a>
           </li>
         </ul>
       </div>

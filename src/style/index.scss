@@ -29,7 +29,6 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
-    opacity: 0;
   }
   &-phrase {
     @include cssVariable('color', '--yellow', #{$yellow});
@@ -120,7 +119,7 @@
     padding-right: 15px;
     position: fixed;
     bottom: 0;
-    height: 340px;
+    height: 400px;
     width: 40px;
     position: fixed;
   }
@@ -216,7 +215,6 @@
 /* Include Merdia print*/
 @media print {
   body {
-    font-size: 15px;
     color: #666 !important;
   }
   a,
@@ -232,20 +230,22 @@
     padding: 100px !important;
   }
   .bio {
-    margin-top: 100px;
+    margin-top: 300px;
   }
   .section {
     width: 90%;
+    padding: 0;
   }
   .picture-front {
     width: 300px;
     margin: auto;
     display: block;
   }
+  body,
   .abstract,
   .experience-item,
   .experience-item li {
-    font-size: 0.8rem !important;
+    font-size: 14px !important;
   }
   .experience-item h3 span:first-child {
     color: $yellow;
@@ -253,16 +253,18 @@
     flex-grow: 2;
   }
   header,
+  footer,
   .contact,
   .picture,
   .get-the-code,
-  .optional-contact ul {
+  .optional-contact {
     display: none !important;
   }
   .skills {
     column-count: 5 !important;
     margin-bottom: 50px;
     li {
+      text-align: left;
       width: unset;
       &:after {
         content: attr(data-title);
@@ -272,6 +274,13 @@
         display: none;
       }
     }
+  }
+  .intro-paragraph {
+    text-align: justify;
+  }
+  .section-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .experience-item {
     margin-bottom: 10px;
