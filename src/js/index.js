@@ -9,7 +9,7 @@ const intro = document.querySelector('.intro');
 const skills = document.querySelector('.skills');
 
 const typedConfig = {
-  typeSpeed: 80,
+  typeSpeed: 50,
   backSpeed: 40,
   loop: false,
   showCursor: false
@@ -22,23 +22,28 @@ function setWindowSize() {
 window.addEventListener('DOMContentLoaded', setWindowSize);
 window.addEventListener('resize', debouncer(setWindowSize));
 
+function description() {
+  // eslint-disable-next-line no-new
+  new Typed('.intro-paragraph', {
+    ...typedConfig,
+    typeSpeed: 40,
+    strings: [
+      "I'm from Aguascalientes, Mexico! now based on New York. Most of my experience is related to code websites and applications, using &#160;<b>JavaScript</b>.<br /><br/> I love to code&#160; <b>high-performance</b>&#160; solutions, using best practices and cutting edge technology."
+    ],
+    onComplete() {
+      document.body.className = '';
+    }
+  });
+}
+
 function authorTitle() {
   // eslint-disable-next-line no-new
   new Typed('.author-title > .title', {
     ...typedConfig,
     strings: ['', 'Software Engineer'],
     onComplete() {
+      description();
       intro.classList.add('intro-ready');
-      [].map
-        .call(document.querySelectorAll('.intro-paragraph'), el => el)
-        .forEach(el => {
-          /* eslint-disable  no-param-reassign */
-          el.style.opacity = 0;
-          el.style.transition = ' 0.5s opacity ease';
-          el.style.opacity = 1;
-          /* eslint-enable  no-param-reassign */
-        });
-      document.body.className = '';
     }
   });
 }
@@ -58,65 +63,63 @@ function authorName() {
 }
 
 setTimeout(authorName, 50);
+
 const fragment = document.createDocumentFragment();
 [
-  'angular',
-  'bitbucket',
-  'autoprefixer',
-  'git',
-  'eslint',
-  'html-5',
-  'node',
-  'redux-saga',
-  'bootstrap',
-  'github',
-  'imagemin',
-  'postcss',
-  'redux',
-  'css-3',
-  'gitlab',
-  'immutable',
-  'pug',
-  'typescript',
-  'docker',
-  'graphql',
-  'javascript',
-  'react-router',
-  'express',
-  'nodemon',
-  'grunt',
-  'jquery',
-  'react',
-  'nextjs',
-  'browserify',
-  'prettier',
-  'puppeteer',
-  'foundation',
-  'gulp',
-  'mysql',
-  'sass',
-  'less',
-  'jest',
-  'babel',
-  'yarn',
-  'npm',
-  'bower',
-  'webpack',
-  'storybook',
-  'reactivex'
-].forEach(skill => {
+  ['angular', 'Angular'],
+  ['bitbucket', 'Bitbucket'],
+  ['autoprefixer', 'Autoprefixer'],
+  ['git', 'GIT'],
+  ['eslint', 'eslint'],
+  ['html-5', 'HTML 5'],
+  ['node', 'Node JS'],
+  ['redux-saga', 'Redux Saga'],
+  ['bootstrap', 'Bootstrap'],
+  ['github', 'Github'],
+  ['imagemin', 'imagemin'],
+  ['postcss', 'PostCSS'],
+  ['redux', 'Redux'],
+  ['css-3', 'CSS 3'],
+  ['gitlab', 'Gitlab'],
+  ['immutable', 'Immutable JS'],
+  ['pug', 'Pug'],
+  ['typescript', 'TypeScript'],
+  ['docker', 'Docker'],
+  ['graphql', 'GraphQL'],
+  ['javascript', 'JavaScript'],
+  ['react-router', 'React Router'],
+  ['express', 'Express JS'],
+  ['nodemon', 'Nodemon'],
+  ['grunt', 'Grunt'],
+  ['jquery', 'jQuery'],
+  ['react', 'React'],
+  ['nextjs', 'Next JS'],
+  ['browserify', 'Browserify'],
+  ['prettier', 'Prettier'],
+  ['puppeteer', 'Puppeter'],
+  ['foundation', 'Foundation'],
+  ['gulp', 'Gulp'],
+  ['mysql', 'MySQL'],
+  ['sass', 'SASS/SCSS'],
+  ['less', 'LESS'],
+  ['jest', 'Jest'],
+  ['babel', 'Babel JS'],
+  ['yarn', 'Yarn'],
+  ['npm', 'NPM'],
+  ['bower', 'Bower'],
+  ['webpack', 'Webpack'],
+  ['storybook', 'Storybook'],
+  ['reactivex', 'RxJS']
+].forEach(function ([skill, name]) {
   const li = document.createElement('li');
   const img = document.createElement('img');
-  const alt = skill
-    .split('-')
-    .map(st => st.charAt(0).toUpperCase() + st.slice(1))
-    .join(' ');
+
   img.src = `img/technology/${skill}.svg`;
   img.className = 'responsive-img';
   img.setAttribute('role', 'presentation');
-  img.setAttribute('title', alt);
-  img.loading = 'lazy';
-  li.setAttribute('data-title', alt);
+  img.setAttribute('title', name);
+  img.setAttribute('loading', 'lazy');
+  li.setAttribute('data-title', name);
   li.appendChild(img);
   fragment.appendChild(li);
 });
@@ -135,12 +138,7 @@ const getScroll = () => {
 
 function headerScrollEvent() {
   const top = getScroll();
-
-  if (top > 0) {
-    header.classList.add('scroll');
-  } else {
-    header.classList.remove('scroll');
-  }
+  header.classList[top > 0 ? 'add' : 'remove']('scroll');
 }
 
 window.addEventListener('DOMContentLoaded', headerScrollEvent);
