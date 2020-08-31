@@ -1,5 +1,6 @@
 node_modules/**
 target/**
 docs/**
+dist/
 src/js/polyfill/**
 webpack.config.js
