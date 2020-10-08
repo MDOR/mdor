@@ -215,7 +215,11 @@
 /* Include Merdia print*/
 @media print {
   body {
-    color: #666 !important;
+    color: black !important;
+    font-weight: 700 !important;
+  }
+  .section-title {
+    color: #efbb35 !important;
   }
   a,
   p,
@@ -246,11 +250,15 @@
   .experience-item,
   .experience-item li {
     font-size: 14px !important;
+    font-weight: 700 !important;
   }
   .experience-item h3 span:first-child {
-    color: $yellow;
     font-size: 0.85rem !important;
     flex-grow: 2;
+  }
+  .experience-item h3 span {
+    color: $yellow !important;
+    font-weight: 700 !important;
   }
   header,
   footer,

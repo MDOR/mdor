@@ -9,8 +9,8 @@ const intro = document.querySelector('.intro');
 const skills = document.querySelector('.skills');
 
 const typedConfig = {
-  typeSpeed: 50,
-  backSpeed: 40,
+  typeSpeed: 20,
+  backSpeed: 20,
   loop: false,
   showCursor: false
 };
@@ -26,7 +26,7 @@ function description() {
   // eslint-disable-next-line no-new
   new Typed('.intro-paragraph', {
     ...typedConfig,
-    typeSpeed: 40,
+    typeSpeed: 10,
     strings: [
       "I'm from Aguascalientes, Mexico! now based on New York. Most of my experience is related to code websites and applications, using &#160;<b>JavaScript</b>.<br /><br/> I love to code&#160; <b>high-performance</b>&#160; solutions, using best practices and cutting edge technology."
     ],
@@ -62,7 +62,7 @@ function authorName() {
   });
 }
 
-setTimeout(authorName, 50);
+setTimeout(authorName, 20);
 
 const fragment = document.createDocumentFragment();
 [
